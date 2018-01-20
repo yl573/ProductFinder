@@ -7,6 +7,7 @@ public class ARManager : MonoBehaviour {
 
 	public GameObject Vuforia;
 	public GameObject ARKit;
+	public 
 
 	// Use this for initialization
 	void Start () {
@@ -14,14 +15,22 @@ public class ARManager : MonoBehaviour {
 		Vuforia.SetActive (true);
 	}
 
-	void OnGUI() {
+//	void OnGUI() {
+//
+//		if (GUI.Button (new Rect (10, 70, 50, 30), "Switch")) {
+//			ARKit.SetActive (true);
+//			Vuforia.SetActive (false);
+//			Debug.Log ("switching");
+//			// VuforiaBehaviour.Instance.enabled = false;
+//		}
+//	}
 
-		if (GUI.Button (new Rect (10, 70, 50, 30), "Switch")) {
-			ARKit.SetActive (true);
-			Vuforia.SetActive (false);
-			Debug.Log ("switching");
-			// VuforiaBehaviour.Instance.enabled = false;
-		}
+	void OnTargetDetected() {
+		ARKit.SetActive (true);
+		Vuforia.SetActive (false);
+		Debug.Log ("switching");
+
+
 	}
 
 }
