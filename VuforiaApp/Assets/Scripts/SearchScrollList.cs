@@ -4,18 +4,46 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class Item {
-	public string itemName;
-}
 
 public class SearchScrollList : MonoBehaviour {
 
-	public List<Item> itemList;
-	public SimpleObjectPool itemObjectPool;
+	private ProductList productList;
+
+	public bool isPopulated = false;
+	public GameObject prefabItemButton;
+	public Transform contentPanel;
+	public ProductFinderClient pfc;
 
 	// Use this for initialization
 	void Start () {
 		
 	}
 
+	void Update() {
+		if (pfc.productsLoaded && isPopulated == false) {
+			// is loaded
+			productList = pfc.productList;
+			removeAllItems ();
+			UpdateScrollList ();
+		}
+	}
+
+	public void UpdateScrollList() {
+		foreach ( string product in productList.products ) {
+			GameObject newButtonObject = (GameObject)GameObject.Instantiate (prefabItemButton);
+			newButtonObject.transform.SetParent(contentPanel, false);
+
+			ItemButton newButtonComponent = newButtonObject.GetComponent<ItemButton>();
+			newButtonComponent.Setup( product );
+		}
+		isPopulated = true;
+	}
+
+	public void removeAllItems() {
+		for ( int i =  contentPanel.childCount - 1; i > 0; i --) 
+		{
+			GameObject toRemove = contentPanel.GetChild(i).gameObject;
+			Destroy (toRemove);
+		}
+	}
 }
