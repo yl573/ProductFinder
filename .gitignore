@@ -1,9 +1,15 @@
 
+
 .DS_Store
 .vscode/
 Mapping/
 UnityApp/
-VuforiaApp/
+VuforiaApp/*
+!VuforiaApp/Assets/
+!VuforiaApp/ProjectSettings/
+
+
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
