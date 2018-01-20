@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour {
+public class ServerInterface : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,6 +11,13 @@ public class NewBehaviourScript1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+	}
+
+	void QueryProduct() {
+	}
+
+	void FindPath() {
 		
 	}
 }

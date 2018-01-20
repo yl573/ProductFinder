@@ -7,30 +7,20 @@ public class ARManager : MonoBehaviour {
 
 	public GameObject Vuforia;
 	public GameObject ARKit;
-	public 
+	public Transform VuforiaOrigin;
 
-	// Use this for initialization
 	void Start () {
-		ARKit.SetActive (false);
-		Vuforia.SetActive (true);
-	}
-
-//	void OnGUI() {
-//
-//		if (GUI.Button (new Rect (10, 70, 50, 30), "Switch")) {
-//			ARKit.SetActive (true);
-//			Vuforia.SetActive (false);
-//			Debug.Log ("switching");
-//			// VuforiaBehaviour.Instance.enabled = false;
-//		}
-//	}
-
-	void OnTargetDetected() {
+//		ARKit.SetActive (false);
+//		Vuforia.SetActive (true);
 		ARKit.SetActive (true);
 		Vuforia.SetActive (false);
-		Debug.Log ("switching");
-
-
 	}
 
+	void OnTargetDetected(VuforiaTargetFoundEventArgs args) {
+		ARKit.SetActive (true);
+		Vuforia.SetActive (false);
+		VuforiaOrigin.position = args.TargetTransform.position;
+		VuforiaOrigin.rotation = args.TargetTransform.rotation;
+		Debug.Log ("switching");
+	}
 }
