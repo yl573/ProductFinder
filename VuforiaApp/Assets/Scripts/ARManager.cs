@@ -5,22 +5,27 @@ using Vuforia;
 
 public class ARManager : MonoBehaviour {
 
-	public GameObject Vuforia;
 	public GameObject ARKit;
 	public Transform VuforiaOrigin;
+	public VuforiaTargetManager Manager;
 
-	void Start () {
-//		ARKit.SetActive (false);
-//		Vuforia.SetActive (true);
+	void Start ()
+	{
+		Manager.TargetFound += OnTargetFound;
+		Manager.TurnOn ();
+		ARKit.SetActive (false);
+	}
+		
+	void OnTargetFound(object sender, VuforiaTargetFoundEventArgs args) {
 		ARKit.SetActive (true);
-		Vuforia.SetActive (false);
+		Manager.TurnOff();
+//		VuforiaOrigin.position = args.TargetTransform.position;
+//		VuforiaOrigin.rotation = args.TargetTransform.rotation;
+		Debug.Log ("switching");
 	}
 
-	void OnTargetDetected(VuforiaTargetFoundEventArgs args) {
-		ARKit.SetActive (true);
-		Vuforia.SetActive (false);
-		VuforiaOrigin.position = args.TargetTransform.position;
-		VuforiaOrigin.rotation = args.TargetTransform.rotation;
-		Debug.Log ("switching");
+	void OnDestroy()
+	{
+		Manager.TargetFound -= OnTargetFound;
 	}
 }

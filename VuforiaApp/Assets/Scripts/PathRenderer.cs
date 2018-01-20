@@ -22,9 +22,9 @@ public class PathRenderer : MonoBehaviour {
 		List<Point> path = new List<Point> ();
 		path.Add (new Point (0, 0));
 		path.Add (new Point (1, 0));
-		path.Add (new Point (1, 1));
-		path.Add (new Point (0, 1));
-		RenderPath (path, -1);
+//		path.Add (new Point (1, 1));
+//		path.Add (new Point (0, 1));
+		RenderPath (path, 0);
 	}
 
 	public void RenderPath(List<Point> path, float z) {
