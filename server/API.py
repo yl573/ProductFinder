@@ -23,7 +23,7 @@ def index():
 @app.route('/findproduct', methods=['POST'])
 def find_product():
 
-    print(json.dumps(request.form))
+    # print(json.dumps(request.form))
     name = request.form['name']
 
     client = MongoClient(db_url)
@@ -33,7 +33,6 @@ def find_product():
     results = finder.find_matching_products(name, 'Coop')
 
     return json.dumps({ "products": results })
-    # return json.dumps(results)
 
 
 @app.route('/findpath', methods=['POST'])
