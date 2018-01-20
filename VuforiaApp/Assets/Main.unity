@@ -1862,6 +1862,7 @@ MonoBehaviour:
   ARKit: {fileID: 1417529332}
   VuforiaOrigin: {fileID: 308834047}
   Manager: {fileID: 1497811710}
+  ARKitCamera: {fileID: 9}
 --- !u!4 &1847556635
 Transform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using UnityEngine.XR.iOS;
 public class UnityARCameraManager : MonoBehaviour {
 
     public Camera m_camera;
+	public ARManager ARManager;
     private UnityARSessionNativeInterface m_session;
 	private Material savedClearMaterial;
 
@@ -75,6 +76,8 @@ public class UnityARCameraManager : MonoBehaviour {
 			m_camera.transform.localRotation = UnityARMatrixOps.GetRotation (matrix);
 
             m_camera.projectionMatrix = m_session.GetCameraProjection ();
+
+			ARManager.DelayedInitVuforiaOrigin ();
         }
 
 	}

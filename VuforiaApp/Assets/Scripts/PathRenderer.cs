@@ -22,16 +22,17 @@ public class PathRenderer : MonoBehaviour {
 		List<Point> path = new List<Point> ();
 		path.Add (new Point (0, 0));
 		path.Add (new Point (1, 0));
-//		path.Add (new Point (1, 1));
-//		path.Add (new Point (0, 1));
+		path.Add (new Point (1, 1));
+		path.Add (new Point (0, 1));
+		path.Add (new Point (0, 0));
 		RenderPath (path, 0);
 	}
 
-	public void RenderPath(List<Point> path, float z) {
+	public void RenderPath(List<Point> path, float height) {
 		for (int i = 0; i < path.Count-1; i++) {
 			// switch z and y
-			Vector3 start = new Vector3 (path [i].x, z, path [i].y);
-			Vector3 end = new Vector3 (path [i + 1].x, z, path [i + 1].y);
+			Vector3 start = new Vector3 (path [i].x, height, path [i].y);
+			Vector3 end = new Vector3 (path [i + 1].x, height, path [i + 1].y);
 			GameObject line = DrawLine(start, end, Color.red);
 			line.transform.parent = WorldOrigin.transform;
 			lines.Add (line);
@@ -52,6 +53,7 @@ public class PathRenderer : MonoBehaviour {
 		myLine.AddComponent<LineRenderer>();
 		LineRenderer lr = myLine.GetComponent<LineRenderer>();
 		lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
+		lr.useWorldSpace = false;
 		lr.SetColors(color, color);
 		lr.SetWidth(0.1f, 0.1f);
 		lr.SetPosition(0, start);

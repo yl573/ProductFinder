@@ -24,4 +24,5 @@ public class VuforiaTargetManager : MonoBehaviour
         VuforiaTargetFoundEventArgs args = new VuforiaTargetFoundEventArgs(TrackedTarget);
         Utility.InvokeEvent(TargetFound, this, args);
     }
+
 }
