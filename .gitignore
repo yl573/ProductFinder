@@ -7,7 +7,7 @@ UnityApp/
 VuforiaApp/*
 !VuforiaApp/Assets/
 !VuforiaApp/ProjectSettings/
-
+**/API-key*
 
 server/database/
 
