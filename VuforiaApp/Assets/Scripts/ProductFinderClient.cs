@@ -4,15 +4,19 @@ using System.Collections;
 using UnityEngine.Networking;
 using System.Collections.Generic;
 
+public class ProductList {
+	public string[] products;
+}
 
+[System.Serializable]
 public class ProductFinderClient: MonoBehaviour {
 
 	public string URL = "139.59.177.111";
 	private InputField SearchBarInputField;
-	private List<string> products;
+	public ProductList productList;
+	public bool productsLoaded = false;
 
 	void Start() {
-//		StartCoroutine( FindProductRoutine () );
 		Debug.Log ("Product Finder Client started");
 	}
 
@@ -25,6 +29,7 @@ public class ProductFinderClient: MonoBehaviour {
 	}
 
 	public void FindProduct() {
+		productsLoaded = false;
 		StartCoroutine(FindProductRoutine());
 	}
 
@@ -44,8 +49,10 @@ public class ProductFinderClient: MonoBehaviour {
 			// Show results as text
 			Debug.Log(www.downloadHandler.text);
 
-			// Or retrieve results as binary data
-//			byte[] results = www.downloadHandler.data;
+			this.productList = JsonUtility.FromJson<ProductList>(www.downloadHandler.text);
+
+			productsLoaded = true;
+
 		}
 	}
 

@@ -30,8 +30,11 @@ def find_product():
 
     finder = ProductFinder(db)
     results = finder.find_matching_products(name, 'Coop')
+    responseObject = {
+        "products": results
+    }
 
-    return json.dumps(results)
+    return json.dumps(responseObject)
 
 
 @app.route('/findpath', methods=['POST'])

@@ -6,10 +6,9 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Item {
 	public string itemName;
-
 }
 
-public class SearchScrollListScript : MonoBehaviour {
+public class SearchScrollList : MonoBehaviour {
 
 	public List<Item> itemList;
 	public SimpleObjectPool itemObjectPool;
