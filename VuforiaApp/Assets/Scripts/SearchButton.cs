@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class SearchButton : MonoBehaviour {
 
 	public Button buttonComponent;
+	public SearchScrollList searchScrollList;
 	public InputField searchBarInputField;
 	public ProductFinderClient productFinderClient;
 
@@ -21,6 +23,7 @@ public class SearchButton : MonoBehaviour {
 	}
 
 	public void HandleClick() {
+		searchScrollList.isPopulated = false;
 		productFinderClient.FindProduct ();
 	}
 }
