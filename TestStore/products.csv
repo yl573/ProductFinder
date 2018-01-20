@@ -1,0 +1,54 @@
+Name,Alias,X Coordinate,Y Coordinate,Height,Aisle Nodes,Shelf,"Shelf Orientation (0 face door, anticlockwise)",Shelf Origin X,Shelf Origin Y,Distance Along Shelf,Shelf Width,Shelf Ratio
+Bananas,Banana,1.305,0.5,1.459,1 2,Ambient,0,1,0.5,0.305,1.22,0.25
+Bananas Minipack,Banana,1.915,0.5,1.459,1 2,Ambient,0,1,0.5,0.915,1.22,0.75
+Easy Peeler,Orange,1.1525,0.5,1.127,1 2,Ambient,0,1,0.5,0.1525,1.22,0.125
+Easy Peeler Boxpack,Orange,1.4575,0.5,1.127,1 2,Ambient,0,1,0.5,0.4575,1.22,0.375
+Limes,Lime,1.7625,0.5,1.127,1 2,Ambient,0,1,0.5,0.7625,1.22,0.625
+Lemons Loose,Lemon,2.0675,0.5,1.127,1 2,Ambient,0,1,0.5,1.0675,1.22,0.875
+Brussels sprouts,Sprouts,1.1525,0.5,0.795,1 2,Ambient,0,1,0.5,0.1525,1.22,0.125
+Parsnip,Parsnip,1.4575,0.5,0.795,1 2,Ambient,0,1,0.5,0.4575,1.22,0.375
+Baby Potatoes,Potatoes,1.7625,0.5,0.795,1 2,Ambient,0,1,0.5,0.7625,1.22,0.625
+Washed White Potatoes,Potatoes,2.0675,0.5,0.795,1 2,Ambient,0,1,0.5,1.0675,1.22,0.875
+Carrots,Carrot,1.305,0.5,0.339,1 2,Ambient,0,1,0.5,0.305,1.22,0.25
+Maris Piper Potatoes,Potatoes,1.915,0.5,0.339,1 2,Ambient,0,1,0.5,0.915,1.22,0.75
+Mixed Leaf Salad Bowl,Salad,2.1525,0.5,1.76,1 2,Chilled 1,0,2,0.5,0.1525,1.22,0.125
+Mixed Leaf Salad,Salad,2.4575,0.5,1.76,1 2,Chilled 1,0,2,0.5,0.4575,1.22,0.375
+Baby Leaf Salad,Salad,2.7625,0.5,1.76,1 2,Chilled 1,0,2,0.5,0.7625,1.22,0.625
+Wild Rocket,Rocket ,3.0675,0.5,1.76,1 2,Chilled 1,0,2,0.5,1.0675,1.22,0.875
+Read To Eat Spinich,Spinich,2.1525,0.5,1.459,1 2,Chilled 1,0,2,0.5,0.1525,1.22,0.125
+Sliced Curly Kale,Kale,2.4575,0.5,1.459,1 2,Chilled 1,0,2,0.5,0.4575,1.22,0.375
+Classic Fruit Salad,Fruit,2.68625,0.5,1.459,1 2,Chilled 1,0,2,0.5,0.68625,1.22,0.5625
+Exotic Fruit Salad,Fruit,2.83875,0.5,1.459,1 2,Chilled 1,0,2,0.5,0.83875,1.22,0.6875
+Mango,Mango,3.0675,0.5,1.459,1 2,Chilled 1,0,2,0.5,1.0675,1.22,0.875
+Strawberries,Strawberry,2.1525,0.5,1.127,1 2,Chilled 1,0,2,0.5,0.1525,1.22,0.125
+Raspberries,Raspberry,2.4575,0.5,1.127,1 2,Chilled 1,0,2,0.5,0.4575,1.22,0.375
+Blueberries,Blueberries,2.915,0.5,1.127,1 2,Chilled 1,0,2,0.5,0.915,1.22,0.75
+Gala Apples,Apple,2.1525,0.5,0.795,1 2,Chilled 1,0,2,0.5,0.1525,1.22,0.125
+Pink Lady Apples,Apple,2.4575,0.5,0.795,1 2,Chilled 1,0,2,0.5,0.4575,1.22,0.375
+Red Grapes,Grapes,2.7625,0.5,0.795,1 2,Chilled 1,0,2,0.5,0.7625,1.22,0.625
+Green Grapes,Grapes,3.0675,0.5,0.795,1 2,Chilled 1,0,2,0.5,1.0675,1.22,0.875
+Ripe Mangos,Mango,2.1525,0.5,0.339,1 2,Chilled 1,0,2,0.5,0.1525,1.22,0.125
+Plums,Plum,2.4575,0.5,0.339,1 2,Chilled 1,0,2,0.5,0.4575,1.22,0.375
+Conference Pears,Pear,2.7625,0.5,0.339,1 2,Chilled 1,0,2,0.5,0.7625,1.22,0.625
+Loose Orange,Orange,3.0675,0.5,0.339,1 2,Chilled 1,0,2,0.5,1.0675,1.22,0.875
+Iceberg Lettuce,Lettuce,3.1525,0.5,1.76,1 2,Chilled 2,0,3,0.5,0.1525,1.22,0.125
+Whole Cucumber,Cucumber,3.4575,0.5,1.76,1 2,Chilled 2,0,3,0.5,0.4575,1.22,0.375
+Mixed Peppers,Pepper,3.7625,0.5,1.76,1 2,Chilled 2,0,3,0.5,0.7625,1.22,0.625
+Avocados,Avocado,4.0675,0.5,1.76,1 2,Chilled 2,0,3,0.5,1.0675,1.22,0.875
+Tomatoes,Tomato,3.1525,0.5,1.459,1 2,Chilled 2,0,3,0.5,0.1525,1.22,0.125
+Baby Plum Tomatoes,Baby Tomato,3.4575,0.5,1.459,1 2,Chilled 2,0,3,0.5,0.4575,1.22,0.375
+Carrot Wedge,Carrot,3.7625,0.5,1.459,1 2,Chilled 2,0,3,0.5,0.7625,1.22,0.625
+Mashed Potato,Potato,4.0675,0.5,1.459,1 2,Chilled 2,0,3,0.5,1.0675,1.22,0.875
+Fine Trimmed Beans,Beans,3.1525,0.5,1.127,1 2,Chilled 2,0,3,0.5,0.1525,1.22,0.125
+Tender Stem Broccoli,Broccoli,3.38125,0.5,1.127,1 2,Chilled 2,0,3,0.5,0.38125,1.22,0.3125
+Asparagus,Asparagus,3.53375,0.5,1.127,1 2,Chilled 2,0,3,0.5,0.53375,1.22,0.4375
+Green Veg Medley,Medley Veg,3.83875,0.5,1.127,1 2,Chilled 2,0,3,0.5,0.83875,1.22,0.6875
+Carrot Cauliflower Broccoli,Veg,4.14375,0.5,1.127,1 2,Chilled 2,0,3,0.5,1.14375,1.22,0.9375
+Cup Mushrooms,Mushroom,3.1525,0.5,0.795,1 2,Chilled 2,0,3,0.5,0.1525,1.22,0.125
+Cauliflower ,Cauliflower,3.4575,0.5,0.795,1 2,Chilled 2,0,3,0.5,0.4575,1.22,0.375
+Brocolli,Brocolli,3.7625,0.5,0.795,1 2,Chilled 2,0,3,0.5,0.7625,1.22,0.625
+Trimmed Leeks,Leek,4.0675,0.5,0.795,1 2,Chilled 2,0,3,0.5,1.0675,1.22,0.875
+Garlic,Garlic,3.1525,0.5,0.339,1 2,Chilled 2,0,3,0.5,0.1525,1.22,0.125
+Onions,Onions,3.4575,0.5,0.339,1 2,Chilled 2,0,3,0.5,0.4575,1.22,0.375
+Red Onions,Onions,3.7625,0.5,0.339,1 2,Chilled 2,0,3,0.5,0.7625,1.22,0.625
+Baking Potatoes,Potatoes,4.0675,0.5,0.339,1 2,Chilled 2,0,3,0.5,1.0675,1.22,0.875
