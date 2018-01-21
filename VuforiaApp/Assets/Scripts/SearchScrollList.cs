@@ -14,6 +14,8 @@ public class SearchScrollList : MonoBehaviour {
 	public GameObject prefabNoResultLabel;
 	public Transform contentPanel;
 	public ProductFinderClient productFinderClientComponent;
+	public GameObject SearchScrollRectComponent;
+	public Button ActivationButton;
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +43,7 @@ public class SearchScrollList : MonoBehaviour {
 			newButtonObject.transform.SetParent(contentPanel, false);
 
 			ItemButton newButtonComponent = newButtonObject.GetComponent<ItemButton>();
-			newButtonComponent.Setup( product, productFinderClientComponent );
+			newButtonComponent.Setup( product, productFinderClientComponent, SearchScrollRectComponent, ActivationButton );
 		}
 
 	}

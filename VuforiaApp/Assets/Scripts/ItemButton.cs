@@ -11,7 +11,10 @@ public class ItemButton : MonoBehaviour {
 
 	public Button button;
 	public Text itemText;
-	public ProductFinderClient productFinderClientComponent;
+
+	private ProductFinderClient productFinderClientComponent;
+	private GameObject SearchScrollListObject;
+	private Button ActivationButton;
 
 
 	void Start () {
@@ -20,24 +23,20 @@ public class ItemButton : MonoBehaviour {
 	}
 
 	void OnPathLoaded(object sender, EventArgs args) {
+		
 		SceneManager.path = productFinderClientComponent.productPath.path;
 		SceneManager.height = productFinderClientComponent.productPath.height;
 		SceneManager.loadAR ();	
+
+//		SearchScrollListObject.SetActive (false);
+//		ActivationButton.enabled = true;
 	}
 
-//	void Update() {
-//		if ( productFinderClientComponent.pathLoaded && this.pathLoaded != true ) {
-//			this.pathLoaded = true;
-//			SceneManager.path = new List<Vector2> ();
-//			SceneManager.path = productFinderClientComponent.productPath.path;
-//			SceneManager.height = productFinderClientComponent.productPath.height;
-//			SceneManager.loadAR ();
-//		}
-//	}
-
-	public void Setup( string productName, ProductFinderClient pfc ) {
+	public void Setup( string productName, ProductFinderClient pfc, GameObject ssl, Button ab ) {
 		this.productName = productName;
 		this.productFinderClientComponent = pfc;
+		this.SearchScrollListObject = ssl;
+		this.ActivationButton = ab;
 		itemText.text = productName;
 	}
 
