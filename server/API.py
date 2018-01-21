@@ -47,7 +47,7 @@ def find_path():
     db = client[db_name]
 
     finder = ProductFinder(db)
-    path, height = finder.search_path_to_product(product, 'Coop', position)
+    path, height = finder.search_path_to_product(product, 'EnginDept', position)
     print(pprint.pformat(path))
     return json.dumps({'path': [list(p) for p in path], 'height': height})
 
