@@ -30,7 +30,7 @@ def find_product():
     db = client[db_name]
 
     finder = ProductFinder(db)
-    results = finder.find_matching_products(name, 'Coop')
+    results = finder.find_matching_products(name, 'EnginDept')
 
     return json.dumps({ "products": results })
 
