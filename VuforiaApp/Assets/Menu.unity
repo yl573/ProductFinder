@@ -232,7 +232,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: a9c136f9dcfd3954fa0f3fab6260607f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e9c411afb87740d99df61f371d9d805, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -364,6 +364,7 @@ MonoBehaviour:
   isPopulated: 0
   prefabItemButton: {fileID: 1485628958670864, guid: 1f7cbf116a25f4a3bb1fb5fdaf0cc438,
     type: 2}
+  prefabNoResultLabel: {fileID: 0}
   contentPanel: {fileID: 909492224}
   pfc: {fileID: 759581700}
 --- !u!1 &326075484
