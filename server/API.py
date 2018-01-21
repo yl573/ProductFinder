@@ -30,7 +30,7 @@ def find_product():
     db = client[db_name]
 
     finder = ProductFinder(db)
-    results = finder.find_matching_products(name, 'EnginDept')
+    results = finder.find_matching_products(name, 'Department')
 
     return json.dumps({ "products": results })
 
@@ -47,7 +47,7 @@ def find_path():
     db = client[db_name]
 
     finder = ProductFinder(db)
-    path, height = finder.search_path_to_product(product, 'EnginDept', position)
+    path, height = finder.search_path_to_product(product, 'Department', position)
     print(pprint.pformat(path))
     return json.dumps({'path': [list(p) for p in path], 'height': height})
 
