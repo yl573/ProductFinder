@@ -1,2 +1,5 @@
 Name,Alias,X Coordinate,Y Coordinate,Height,Aisle Nodes
-Combustion,Burn,1.19,1.2,1.5,3 4
+Combustion,Burn,1.19,0.9,1.5,3 4
+Marine Diesel Engins,Diesel Engins,1.58,0.9,1.5,3 4
+Atomic Energy,energy,3.6,0.3,1.12,1 2
+Nuclear Systems 2,nuclear,2.04,0.3,0.55,1 2
