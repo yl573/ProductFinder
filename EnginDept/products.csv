@@ -1,9 +1,9 @@
 Name,Alias,X Coordinate,Y Coordinate,Height,Aisle Nodes
 Volcanic and Tectonic Hazard,hazard,1.19,0.9,1.5,3 4
-The Science And Engineering of Nuclear Power,,1.58,0.9,1.5,3 4
-Electromagnetism,,1.19,0.9,1.5,3 4
-Classical Dynamics,,1.58,0.9,1.5,3 4
-Advanced Quantum Field Theory,,1.58,0.9,1.5,3 4
-Supersymmetry and the Universe,,1.58,0.9,1.5,3 4
-Design of Nuclear Power Plants,,1.58,0.9,1.5,3 4
-Design and Safety of Modern Nuclear Power Plants,,1.58,0.9,1.5,3 4
+The Science And Engineering of Nuclear Power,nucelar,1.58,0.9,1.5,3 4
+Electromagnetism,EM,1.19,0.9,1.5,3 4
+Classical Dynamics,CD,1.58,0.9,1.5,3 4
+Advanced Quantum Field Theory,AQFM,1.58,0.9,1.5,3 4
+Supersymmetry and the Universe,SU,1.58,0.9,1.5,3 4
+Design of Nuclear Power Plants,NPD,1.58,0.9,1.5,3 4
+Design and Safety of Modern Nuclear Power Plants,NPSD,1.58,0.9,1.5,3 4
