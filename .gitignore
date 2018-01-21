@@ -9,6 +9,7 @@ VuforiaApp/*
 !VuforiaApp/ProjectSettings/
 **/API-key*
 VuforiaApp/Assets/SpeechRecog/TempWav/*
+**/*.ai
 
 server/database/
 
