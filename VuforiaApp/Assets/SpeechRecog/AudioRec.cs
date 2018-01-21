@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Net;
 using System.IO;
 using System;
 
 public class AudioRec : MonoBehaviour {
 	public string RequestText;
+
+	public Button speechRecognitionButton;
+
+	public SearchScrollList searchScrollList;
+	public InputField searchBarInputField;
+	public ProductFinderClient productFinderClient;
 
 	AudioClip myAudioClip;
 	private bool _newRecording = false;
@@ -15,7 +22,7 @@ public class AudioRec : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		speechRecognitionButton.onClick.AddListener (HandleClick);
 	}
 	
 	// Update is called once per frame
@@ -25,7 +32,7 @@ public class AudioRec : MonoBehaviour {
 			_recordingFinished = true;
 			_audioSource.clip = myAudioClip;
 			Debug.Log ("Stop");
-			SavWav.Save (Application.dataPath+"/TempWav/testWav", _audioSource.clip);
+			SavWav.Save (Application.dataPath+"/SpeechRecog/TempWav/testWav", _audioSource.clip);
 
 			// First step: Send a request to the service
 			HttpWebRequest request = null;
@@ -36,12 +43,12 @@ public class AudioRec : MonoBehaviour {
 			request.Method = "POST";
 			request.ProtocolVersion = HttpVersion.Version11;
 			request.ContentType = @"audio/wav; codec=audio/pcm; samplerate=16000";
-			using (StreamReader reader = new StreamReader(Application.dataPath+"/API-key.txt")){
+			using (StreamReader reader = new StreamReader(Application.dataPath+"/SpeechRecog/API-key.txt")){
 				request.Headers["Ocp-Apim-Subscription-Key"] = reader.ReadToEnd();
 			}
 
 			// Send an audio file by 1024 byte chunks
-			using (FileStream fs = new FileStream(Application.dataPath+"/TempWav/testWav.wav", FileMode.Open, FileAccess.Read))
+			using (FileStream fs = new FileStream(Application.dataPath+"/SpeechRecog/TempWav/testWav.wav", FileMode.Open, FileAccess.Read))
 			{
 
 				/*
@@ -69,7 +76,7 @@ public class AudioRec : MonoBehaviour {
 			// Second step: Process the speech recognition response
 			// Get the response from the service.
 			//Console.WriteLine("Response:");
-			Debug.Log ("Response:");
+//			Debug.Log ("Response:");
 			string responseRaw;
 			SpeechRecResponse resp;
 			using (WebResponse response = request.GetResponse())
@@ -79,24 +86,42 @@ public class AudioRec : MonoBehaviour {
 				{
 					responseRaw = sr.ReadToEnd();
 				}
-				Debug.Log(responseRaw);
+//				Debug.Log(responseRaw);
 				resp = JsonUtility.FromJson<SpeechRecResponse>(responseRaw);
 				RequestText = resp.DisplayText;
+				if (RequestText != null) {
+					RequestText = RequestText.Substring (0, RequestText.Length - 1);
+					onSpeechRecognised (RequestText);
+
+				}
 				Debug.Log (RequestText);
 			}
 		}
 	}
 
-	void OnGUI()
-	{
-		if (GUI.Button (new Rect (10, 10, 60, 50), "Recognition")) {
-			_newRecording = true;
-			_recordingFinished = false;
-			_audioSource = GetComponent<AudioSource> ();
-			Debug.Log ("Start");
-			myAudioClip = Microphone.Start (null, false, 2, 16000);
-		}
+	public void HandleClick() {
+		_newRecording = true;
+		_recordingFinished = false;
+		_audioSource = GetComponent<AudioSource> ();
+		Debug.Log ("Start");
+		myAudioClip = Microphone.Start (null, false, 2, 16000);
 	}
+
+	private void onSpeechRecognised( string rtext) 
+	{
+		searchBarInputField.text = rtext;
+		// execute search
+		searchScrollList.isPopulated = false;
+		productFinderClient.FindProduct ();
+	}
+
+
+//	void OnGUI()
+//	{
+////		if (GUI.Button (new Rect (10, 10, 60, 50), "Recognition")) {
+//			
+////		}
+//	}
 }
 
 
