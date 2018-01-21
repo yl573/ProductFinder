@@ -12,7 +12,7 @@ public class SearchScrollList : MonoBehaviour {
 	public bool isPopulated = false;
 	public GameObject prefabItemButton;
 	public Transform contentPanel;
-	public ProductFinderClient pfc;
+	public ProductFinderClient productFinderClientComponent;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +20,9 @@ public class SearchScrollList : MonoBehaviour {
 	}
 
 	void Update() {
-		if (pfc.productsLoaded && isPopulated == false) {
+		if (productFinderClientComponent.productsLoaded && isPopulated == false) {
 			// is loaded
-			productList = pfc.productList;
+			productList = productFinderClientComponent.productList;
 			removeAllItems ();
 			UpdateScrollList ();
 		}
@@ -34,7 +34,7 @@ public class SearchScrollList : MonoBehaviour {
 			newButtonObject.transform.SetParent(contentPanel, false);
 
 			ItemButton newButtonComponent = newButtonObject.GetComponent<ItemButton>();
-			newButtonComponent.Setup( product );
+			newButtonComponent.Setup( product, productFinderClientComponent );
 		}
 		isPopulated = true;
 	}
