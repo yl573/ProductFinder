@@ -34,10 +34,10 @@ public class ARManager : MonoBehaviour {
 
 	}
 
-	public void Update() {
-		Debug.LogFormat ("ARKit camera position: {0}", ARKitCamera.position);
-		Debug.LogFormat ("ARKit camera rotation: {0}", ARKitCamera.eulerAngles);
-	}
+//	public void Update() {
+//		Debug.LogFormat ("ARKit camera position: {0}", ARKitCamera.position);
+//		Debug.LogFormat ("ARKit camera rotation: {0}", ARKitCamera.eulerAngles);
+//	}
 
 	IEnumerator DelayedInitVuforiaOriginWorker()
 	{
