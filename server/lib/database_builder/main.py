@@ -25,7 +25,7 @@ def get_file_paths(folder_path):
 
 
 def string_to_array(string):
-    return [int(x) for x in string.split()]
+    return [float(x) for x in string.split()]
 
 
 def save_nodes(nodes_df, node_collection):
@@ -40,7 +40,7 @@ def save_nodes(nodes_df, node_collection):
     for i in index_to_id.keys():
         node_id = index_to_id[i]
         linked_nodes = string_to_array(
-            nodes_df.loc[i, 'Connected Nodes'].astype('str'))
+            nodes_df.loc[i, 'Connected Nodes'])
         linked_node_ids = [index_to_id[n] for n in linked_nodes]
         node_collection.add_linked_node_ids(node_id, linked_node_ids)
 

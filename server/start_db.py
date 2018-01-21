@@ -12,4 +12,4 @@ db = client[db_name]
 
 builder = DatabaseBuilder(db)
 builder.wipe_database()
-builder.load_store_from_folder('../TestStore')
+builder.load_store_from_folder('../EnginDept')
