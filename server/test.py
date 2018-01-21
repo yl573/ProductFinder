@@ -11,23 +11,23 @@ db_name='ProductFinder'
 client = MongoClient(db_url)
 db = client[db_name]
 
-builder = DatabaseBuilder(db)
-builder.wipe_database()
-builder.load_store_from_folder('./TestStore')
+# builder = DatabaseBuilder(db)
+# builder.wipe_database()
+# builder.load_store_from_folder('./EnginDept')
 
-reader = QRReader(db)
-qr_codes = reader.find_codes_for_store('Coop')
-print('QR codes: ', qr_codes)
+# reader = QRReader(db)
+# qr_codes = reader.find_codes_for_store('Coop')
+# print('QR codes: ', qr_codes)
 
-store, transform = reader.get_info(qr_codes[0])
-print('store: ', store)
-print('QR code transform: ', transform)
+# store, transform = reader.get_info(qr_codes[0])
+# print('store: ', store)
+# print('QR code transform: ', transform)
 
 finder = ProductFinder(db)
-results = finder.find_matching_products('onion', store)
+results = finder.find_matching_products('c', 'Department')
 print('results: ', pprint.pformat(results))
 
 if len(results) > 0:
-    path, height = finder.search_path_to_product(results[0], store, (0.1,3))
+    path, height = finder.search_path_to_product(results[0], 'Department', (0,0))
     print('path: ', pprint.pformat(path))
     print('height: ', height)

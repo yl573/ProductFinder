@@ -364,9 +364,10 @@ MonoBehaviour:
   isPopulated: 0
   prefabItemButton: {fileID: 1485628958670864, guid: 1f7cbf116a25f4a3bb1fb5fdaf0cc438,
     type: 2}
-  prefabNoResultLabel: {fileID: 0}
+  prefabNoResultLabel: {fileID: 1485628958670864, guid: 170cd9725d9b84b45bcb89da09762927,
+    type: 2}
   contentPanel: {fileID: 909492224}
-  pfc: {fileID: 0}
+  productFinderClientComponent: {fileID: 759581700}
 --- !u!1 &326075484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,7 +1057,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00005278898}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &909492225
@@ -1482,7 +1483,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 883961597}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
