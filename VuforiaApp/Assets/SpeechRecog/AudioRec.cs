@@ -104,7 +104,7 @@ public class AudioRec : MonoBehaviour {
 		_recordingFinished = false;
 		_audioSource = GetComponent<AudioSource> ();
 		Debug.Log ("Start");
-		myAudioClip = Microphone.Start (null, false, 2, 16000);
+		myAudioClip = Microphone.Start (null, false, 3, 16000);
 	}
 
 	private void onSpeechRecognised( string rtext) 
