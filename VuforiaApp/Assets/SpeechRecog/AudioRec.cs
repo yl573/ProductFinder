@@ -25,7 +25,7 @@ public class AudioRec : MonoBehaviour {
 			_recordingFinished = true;
 			_audioSource.clip = myAudioClip;
 			Debug.Log ("Stop");
-			SavWav.Save (Application.dataPath+"/TempWav/testWav", _audioSource.clip);
+			SavWav.Save (Application.dataPath+"/SpeechRecog/TempWav/testWav", _audioSource.clip);
 
 			// First step: Send a request to the service
 			HttpWebRequest request = null;
@@ -36,12 +36,12 @@ public class AudioRec : MonoBehaviour {
 			request.Method = "POST";
 			request.ProtocolVersion = HttpVersion.Version11;
 			request.ContentType = @"audio/wav; codec=audio/pcm; samplerate=16000";
-			using (StreamReader reader = new StreamReader(Application.dataPath+"/API-key.txt")){
+			using (StreamReader reader = new StreamReader(Application.dataPath+"/SpeechRecog/API-key.txt")){
 				request.Headers["Ocp-Apim-Subscription-Key"] = reader.ReadToEnd();
 			}
 
 			// Send an audio file by 1024 byte chunks
-			using (FileStream fs = new FileStream(Application.dataPath+"/TempWav/testWav.wav", FileMode.Open, FileAccess.Read))
+			using (FileStream fs = new FileStream(Application.dataPath+"/SpeechRecog/TempWav/testWav.wav", FileMode.Open, FileAccess.Read))
 			{
 
 				/*
@@ -82,6 +82,8 @@ public class AudioRec : MonoBehaviour {
 				Debug.Log(responseRaw);
 				resp = JsonUtility.FromJson<SpeechRecResponse>(responseRaw);
 				RequestText = resp.DisplayText;
+				if (RequestText != null)
+					RequestText = RequestText.Substring (0, RequestText.Length - 1);
 				Debug.Log (RequestText);
 			}
 		}
