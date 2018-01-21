@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Net;
 using System.IO;
 using System;
 
 public class AudioRec : MonoBehaviour {
 	public string RequestText;
+
+	public Button speechRecognitionButton;
+
+	public SearchScrollList searchScrollList;
+	public InputField searchBarInputField;
+	public ProductFinderClient productFinderClient;
 
 	AudioClip myAudioClip;
 	private bool _newRecording = false;
@@ -15,7 +22,7 @@ public class AudioRec : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		speechRecognitionButton.onClick.AddListener (HandleClick);
 	}
 	
 	// Update is called once per frame
@@ -69,7 +76,7 @@ public class AudioRec : MonoBehaviour {
 			// Second step: Process the speech recognition response
 			// Get the response from the service.
 			//Console.WriteLine("Response:");
-			Debug.Log ("Response:");
+//			Debug.Log ("Response:");
 			string responseRaw;
 			SpeechRecResponse resp;
 			using (WebResponse response = request.GetResponse())
@@ -79,26 +86,42 @@ public class AudioRec : MonoBehaviour {
 				{
 					responseRaw = sr.ReadToEnd();
 				}
-				Debug.Log(responseRaw);
+//				Debug.Log(responseRaw);
 				resp = JsonUtility.FromJson<SpeechRecResponse>(responseRaw);
 				RequestText = resp.DisplayText;
-				if (RequestText != null)
+				if (RequestText != null) {
 					RequestText = RequestText.Substring (0, RequestText.Length - 1);
+					onSpeechRecognised (RequestText);
+
+				}
 				Debug.Log (RequestText);
 			}
 		}
 	}
 
-	void OnGUI()
-	{
-		if (GUI.Button (new Rect (10, 10, 60, 50), "Recognition")) {
-			_newRecording = true;
-			_recordingFinished = false;
-			_audioSource = GetComponent<AudioSource> ();
-			Debug.Log ("Start");
-			myAudioClip = Microphone.Start (null, false, 2, 16000);
-		}
+	public void HandleClick() {
+		_newRecording = true;
+		_recordingFinished = false;
+		_audioSource = GetComponent<AudioSource> ();
+		Debug.Log ("Start");
+		myAudioClip = Microphone.Start (null, false, 2, 16000);
 	}
+
+	private void onSpeechRecognised( string rtext) 
+	{
+		searchBarInputField.text = rtext;
+		// execute search
+		searchScrollList.isPopulated = false;
+		productFinderClient.FindProduct ();
+	}
+
+
+//	void OnGUI()
+//	{
+////		if (GUI.Button (new Rect (10, 10, 60, 50), "Recognition")) {
+//			
+////		}
+//	}
 }
 
 
