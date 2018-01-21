@@ -2,63 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Point
-{
-	public float x, y;
-	public Point(float xpos, float ypos) {
-		x = xpos;
-		y = ypos;
-	}
-}
 
 public class PathRenderer : MonoBehaviour {
 
 	public GameObject WorldOrigin;
 
-	private List<GameObject> lines;
+	private GameObject pathLine;
 
 	public void Start() {
-		lines = new List<GameObject> ();
-		List<Point> path = new List<Point> ();
-		path.Add (new Point (0, 0));
-		path.Add (new Point (1, 0));
-		path.Add (new Point (1, 1));
-		path.Add (new Point (0, 1));
-		path.Add (new Point (0, 0));
-		RenderPath (path, 0);
+		RenderPath (SceneManager.path, SceneManager.height);
 	}
 
-	public void RenderPath(List<Point> path, float height) {
-		for (int i = 0; i < path.Count-1; i++) {
-			// switch z and y
-			Vector3 start = new Vector3 (path [i].x, height, path [i].y);
-			Vector3 end = new Vector3 (path [i + 1].x, height, path [i + 1].y);
-			GameObject line = DrawLine(start, end, Color.red);
-			line.transform.parent = WorldOrigin.transform;
-			lines.Add (line);
-			Debug.Log ("line added: " + start + " to " + end);
+	public void RenderPath(List<Vector2> path2d, float height) {
+
+		Vector3[] path = ToVec3Path (path2d, height);
+		pathLine = new GameObject();
+		pathLine.transform.position = new Vector3 (path2d[0].x, height, path2d[0].y);
+		pathLine.AddComponent<LineRenderer>();
+		LineRenderer lr = pathLine.GetComponent<LineRenderer>();
+		lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
+		lr.SetColors(Color.red, Color.red);
+		lr.SetWidth(0.05f, 0.05f);
+		lr.SetVertexCount (path.Length);
+		lr.SetPositions (path);
+		lr.useWorldSpace = false;
+		pathLine.transform.parent = WorldOrigin.transform;
+	}
+
+	private Vector3[] ToVec3Path(List<Vector2> path2d, float height) {
+		Vector3[] path = new Vector3[path2d.Count];
+		for (int i = 0; i < path.Length; i++) {
+			path [i] = new Vector3 (path2d [i].x, height, path2d [i].y);
 		}
+		return path;
 	}
 
 	public void ClearPath() {
-		foreach (GameObject line in lines) {
-			GameObject.Destroy(line, 0);
-		}
-	}
 
-	private GameObject DrawLine(Vector3 start, Vector3 end, Color color)
-	{
-		GameObject myLine = new GameObject();
-		myLine.transform.position = start;
-		myLine.AddComponent<LineRenderer>();
-		LineRenderer lr = myLine.GetComponent<LineRenderer>();
-		lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
-		lr.useWorldSpace = false;
-		lr.SetColors(color, color);
-		lr.SetWidth(0.1f, 0.1f);
-		lr.SetPosition(0, start);
-		lr.SetPosition(1, end);
-		return myLine;
+		GameObject.Destroy(pathLine,0);
 	}
 
 }

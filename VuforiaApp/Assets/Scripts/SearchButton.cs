@@ -25,5 +25,14 @@ public class SearchButton : MonoBehaviour {
 	public void HandleClick() {
 		searchScrollList.isPopulated = false;
 		productFinderClient.FindProduct ();
+
+//		List<Vector2> path = new List<Vector2> ();
+//		path.Add (new Vector2(0,0));
+//		path.Add (new Vector2(1,0));
+//		path.Add (new Vector2(1,1));
+//		path.Add (new Vector2(0,1));
+//		SceneManager.path = path;
+//		SceneManager.height = 0;
+//		SceneManager.loadAR ();
 	}
 }
