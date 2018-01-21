@@ -43,9 +43,11 @@ public class AudioRec : MonoBehaviour {
 			request.Method = "POST";
 			request.ProtocolVersion = HttpVersion.Version11;
 			request.ContentType = @"audio/wav; codec=audio/pcm; samplerate=16000";
-			using (StreamReader reader = new StreamReader(Application.dataPath+"/SpeechRecog/API-key.txt")){
-				request.Headers["Ocp-Apim-Subscription-Key"] = reader.ReadToEnd();
-			}
+			string apiKey = ((TextAsset)Resources.Load ("API-key", typeof(TextAsset))).text;
+			request.Headers ["Ocp-Apim-Subscription-Key"] = apiKey;
+//			using (StreamReader reader = new StreamReader(Application.dataPath+"/SpeechRecog/API-key.txt")){
+//				request.Headers["Ocp-Apim-Subscription-Key"] = reader.ReadToEnd();
+//			}
 
 			// Send an audio file by 1024 byte chunks
 			using (FileStream fs = new FileStream(Path.Combine(Application.persistentDataPath, "testWav.wav"), FileMode.Open, FileAccess.Read))
@@ -105,6 +107,7 @@ public class AudioRec : MonoBehaviour {
 		_audioSource = GetComponent<AudioSource> ();
 		Debug.Log ("Start");
 		myAudioClip = Microphone.Start (null, false, 3, 16000);
+		Debug.Log ("Microphone started");
 	}
 
 	private void onSpeechRecognised( string rtext) 

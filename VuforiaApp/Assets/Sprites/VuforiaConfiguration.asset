@@ -8,12 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -2067402452, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
+  m_Script: {fileID: -2067402452, guid: 1e108ae5f2133934f948edded555f03e, type: 3}
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: 
-    ufoLicenseKey: QVIrME9jZi8vLy8vQUFBQUtDQjQrVGZ3alVycnJYUm9CMkVaMjdvc0YvdlN3K2JpUDN3RDFpSjVtbFJKODdZS1doVUFaZnlGUjNaU0V1WS9nd1dTdEltSlJEbXRoY0VpYkxBMFNka0xtUUR3U2QzTXBWaGdaeHZlckJWcHpqZVhyd0JOY2dNS1Fub2pHcHdFT1Fld1U0V2tlYUF5b2RuajBIdVlsWm1ZckFxNmxsUjg1L3ZBZEZjajdJSTFCVGZoY3IwREkvckp0cU9taFFwckszMlhCckFvc3h2N1I4WnlEdzVnMkJLWHM0eURENHduWU5vcU5JMzhtSThocXQrYVJNTlB5VUdsS3J3NVdnU3NxSVlEUGRnM3VIbWp6ajFjenNReTVHMU1mY3FCWjV6NjFyb2VnSkxPSml2d0lOdGRzTkJUaDJOQSt4eWFBYlhqQ09maWJRbEdXQno2M2VyRFF0dTlqK1hGRUlnV2VKTnludm5maDJpOE9xSjY=
+    vuforiaLicenseKey: AeaOjJ//////AAAAmWruDO3KdkG+l0VWOrjGI/x8S51QlhYzdkqwEhgwliNmYMhlxGR09kiGl2zaExBLsgUMpClJEqn3VihbhSdrfXxS5Ar9hhxwl06Z4zO+1fwg2zXbSmSdV1rqemzA4o8a6r/vlycvBtCLJ4Df3qm3wqxjbAbs2+hcFCnoToOO4T88lcssAJIycJdtcRmS/6JorUIz2aMTCS7gPpHZEzdqlhBSfT7pC8P8PEqSpbP3LnxR11NkVNjUvT0WpLcY+Qo1MYJQVILWkdwgjGuGs+qlAaZMNGSkJg4c+5DtBeJObd5Fix1Yg+XsCUE5WjWsFzTz508YvmZugWTeSVokwf3ZQ7AeS/qq5iLKtkvPi6UzoxCG
+    ufoLicenseKey: QVM2dVVIYi8vLy8vQUFBQUtLdnhQc2tWVGs5Q2dNYlVBcXNiYTQ5MmQzMDJMVmZwblJPaFF4K01KWDZWTm5aOHlPdUIwME9nRzFpWVlLSHZWYzVTZUR2TGZlZVFoUHJOSDkwZm9ySW5nUVlXUE5LRlg0WFYwTDFWL2R3UTdTYWxaS3M4VjNSZkFNZlNNNzNubTFLMkJ0RE9JQnBJT1cxSjZIeDdtaTZidVpRUTZ4VmdObDlWY1ZZZ01lT1pEWnpCdEh1TmtybHU4UzZXc3NlOGpTQjczVFE3bXlhY2pCOVlMZDE0ckYrNm15eFpJRXk2Wm13RDJUeXZkZ3ZWL21NdGRzRW9TQk8vTG1IK0pCNWdaZ3owdXFZQU5CV1JRT0pyQXlTc2pxbGFTb3lRb1JXZWYvc2l1TTVrL2ZCK29BNkVIblF0enYzK3FGNDVZK2tqb2hteFpCaEc2L2JuUUdWVG5ZUmp3ai9BbFdYWi9tRlpESHpOYkRPeTVwRjk=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
@@ -43,8 +43,10 @@ MonoBehaviour:
       FieldOfView: {x: 0, y: 0, z: 0, w: 0}
       ContainsMagnet: 0
   databaseLoad:
-    dataSetsToLoad: []
-    dataSetsToActivate: []
+    dataSetsToLoad:
+    - ProductFinderDatabase
+    dataSetsToActivate:
+    - ProductFinderDatabase
   videoBackground:
     clippingMode: 0
     numDivisions: 2
@@ -57,7 +59,7 @@ MonoBehaviour:
     autoStartTracker: 0
     trackingMode: 0
     posePrediction: 0
-    modelCorrectionMode: 0
+    modelCorrectionMode: 2
     modelTransformEnabled: 0
     modelTransform: {x: 0, y: 0.1, z: -0.1}
   smartTerrain:
@@ -66,5 +68,5 @@ MonoBehaviour:
   webcam:
     deviceNameSetInEditor: 
     flipHorizontally: 0
-    turnOffWebCam: 0
+    turnOffWebCam: 1
     renderTextureLayer: 30
