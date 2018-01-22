@@ -1,7 +1,7 @@
 from lib.product_search.main import ProductFinder
 from lib.database_builder.main import DatabaseBuilder
 from lib.qr_reader.main import QRReader
-
+import sys
 from pymongo import MongoClient
  
 import pprint
@@ -10,6 +10,11 @@ import json
 from flask import Flask, request
 app = Flask(__name__)
 
+if len(sys.argv) == 1:
+    print("please specify which map to load")
+    sys.exit()
+
+store_name = sys.argv[1]
 
 db_url='mongodb://localhost:27017/',
 db_name='ProductFinder'
@@ -30,7 +35,7 @@ def find_product():
     db = client[db_name]
 
     finder = ProductFinder(db)
-    results = finder.find_matching_products(name, 'Department')
+    results = finder.find_matching_products(name, store_name)
 
     return json.dumps({ "products": results })
 
@@ -47,7 +52,7 @@ def find_path():
     db = client[db_name]
 
     finder = ProductFinder(db)
-    path, height = finder.search_path_to_product(product, 'Department', position)
+    path, height = finder.search_path_to_product(product, store_name, position)
     print(pprint.pformat(path))
     return json.dumps({'path': [list(p) for p in path], 'height': height})
 

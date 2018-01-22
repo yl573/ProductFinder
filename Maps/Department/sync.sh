@@ -1,0 +1,1 @@
+rsync -auvP ./*.csv root@139.59.177.111:~/ProductFinder/EnginDept/
