@@ -1,0 +1,23 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "64D3A373968B7CB67E9B1D2B63C8E087465CDD5B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "64D3A373968B7CB67E9B1D2B63C8E087465CDD5B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "95663AB2-350C-4311-8E3F-F40FBE8EA1E5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "64D3A373968B7CB67E9B1D2B63C8E087465CDD5B" : "ProductFinder\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ProductFinder",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ProductFinder\/ProductFinder.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yl573\/ProductFinder.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "64D3A373968B7CB67E9B1D2B63C8E087465CDD5B"
+    }
+  ]
+}

@@ -17,7 +17,6 @@ public class PathRenderer : MonoBehaviour {
 	public void RenderPath(List<Vector2> path2d, float height) {
 
 		Vector3[] path = ToVec3Path (path2d, height);
-//		Vector3[] path = ToVec3Path (path2d, 0);
 		pathLine = new GameObject();
 		pathLine.transform.position = new Vector3 (path2d[0].x, 0, path2d[0].y);
 		pathLine.AddComponent<LineRenderer>();

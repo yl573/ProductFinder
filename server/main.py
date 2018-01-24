@@ -10,11 +10,18 @@ import json
 from flask import Flask, request
 app = Flask(__name__)
 
+
 if len(sys.argv) == 1:
     print("please specify which map to load")
     sys.exit()
 
 store_name = sys.argv[1]
+port = 80
+if len(sys.argv) == 3:
+    port = sys.argv[2]
+
+
+
 
 db_url='mongodb://localhost:27017/',
 db_name='ProductFinder'
@@ -57,4 +64,4 @@ def find_path():
     return json.dumps({'path': [list(p) for p in path], 'height': height})
 
 
-app.run(host="0.0.0.0", port=80)
+app.run(host="0.0.0.0", port=port)
