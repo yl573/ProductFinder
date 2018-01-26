@@ -11,18 +11,20 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
-
+    
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var sessionInfoLabel: UILabel!
     @IBOutlet weak var sessionInfoView: UIVisualEffectView!
+    
+    let networkService = NetworkService()
+    let pathRenderer = PathRenderer()
+    public var product: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         sceneView.showsStatistics = true
         UIApplication.shared.isIdleTimerDisabled = true
-//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-//        sceneView.scene = scene
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,15 +34,23 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sceneView.session.run(configuration)
         sceneView.session.delegate = self
         
-        var path:[SCNVector3] = []
-        path.append(SCNVector3(0,0,0))
-        path.append(SCNVector3(1,0,0))
-        path.append(SCNVector3(1,0,1))
+        guard let product = product else {return}
         
-        renderPath(relativeTo: sceneView.scene.rootNode, forPath: path)
+        // z -> -y
+        // x -> -x
+        // y -> z
+        let storeOrigin = SCNNode()
+        let storeOrientation = SCNQuaternion(0, 0.7071068, 0.7071068, 0)
+        storeOrigin.orientation = storeOrientation
+        storeOrigin.localTranslate(by: SCNVector3(0,0,-1.5))
+        sceneView.scene.rootNode.addChildNode(storeOrigin)
         
-        let network = NetworkService()
-        network.getProducts()
+        networkService.findPath(from: (0,0), to: product) { (path: [(Float, Float)]?, height: Float?) in
+            guard let path = path, let height = height else {return}
+            if path.count > 0 {
+                self.pathRenderer.renderPath(for: path, height: height, parent: storeOrigin)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,28 +62,28 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
+    
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-
+        
         let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
         let planeNode = SCNNode(geometry: plane)
         planeNode.simdPosition = float3(planeAnchor.center.x, 0, planeAnchor.center.z)
-
+        
         planeNode.eulerAngles.x = -.pi / 2
         planeNode.opacity = 0.25
         node.addChildNode(planeNode)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-
+        
         guard let planeAnchor = anchor as?  ARPlaneAnchor,
             let planeNode = node.childNodes.first,
             let plane = planeNode.geometry as? SCNPlane
             else { return }
-
+        
         planeNode.simdPosition = float3(planeAnchor.center.x, 0, planeAnchor.center.z)
         plane.width = CGFloat(planeAnchor.extent.x)
         plane.height = CGFloat(planeAnchor.extent.z)
@@ -101,13 +111,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
     
     // MARK: - Private methods
-    
-    private func renderPath(relativeTo parent: SCNNode, forPath path: [SCNVector3]) {
-        for i in 0...path.count-2 {
-            let line = Line(start: path[i], end: path[i+1], radius: 0.005, color: UIColor.red)
-            parent.addChildNode(line)
-        }
-    }
     
     private func updateSessionInfoLabel(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
         // Update the UI to provide feedback on the state of the AR experience.
@@ -139,5 +142,5 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sessionInfoLabel.text = message
         sessionInfoView.isHidden = message.isEmpty
     }
-
+    
 }

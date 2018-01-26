@@ -10,7 +10,8 @@ import SceneKit
 
 class Line: SCNNode
 {
-    init(start v1: SCNVector3,//source
+    init(parent: SCNNode,
+        start v1: SCNVector3,//source
         end v2: SCNVector3,//destination
         radius: CGFloat,//somes option for the cylinder
         color: UIColor )// color of your node object
@@ -28,6 +29,7 @@ class Line: SCNNode
         
         //define his position
         nodeV2.position = v2
+        parent.addChildNode(nodeV2)
         
         //Align Z axis
         let zAlign = SCNNode()

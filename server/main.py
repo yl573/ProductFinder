@@ -61,6 +61,7 @@ def find_path():
     finder = ProductFinder(db)
     path, height = finder.search_path_to_product(product, store_name, position)
     print(pprint.pformat(path))
+    print(height)
     return json.dumps({'path': [list(p) for p in path], 'height': height})
 
 
