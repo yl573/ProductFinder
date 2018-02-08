@@ -1,4 +1,5 @@
-from ..shared.collections import ProductCollection, NodeCollection, StoreCollection, QRCodeCollection
+from ..shared.collections import (ProductCollection, NodeCollection, 
+StoreCollection, QRCodeCollection, ShelfCollection)
 from os import path
 import json
 import pandas as pd
@@ -87,6 +88,42 @@ def save_qr_codes(store_id, store, qr_collection):
 def save_store(store, store_collection, product_ids, index_to_id):
     return store_collection.add_store(store['Name'], list(index_to_id.values()), product_ids)
 
+class ShelfOnlyDatabaseBuilder():
+    def __init__(self, db):
+        self.db = db
+        self.products = ProductCollection(self.db)
+        self.stores = StoreCollection(self.db)
+        self.shelves = ShelfCollection(self.db)
+
+    def load_shelves_and_products(self, shelf_csv, products_csv, store_name):
+        name_id_map = self.load_shelves(shelf_csv)
+        product_ids = self.load_products(products_csv, name_id_map)
+        self.stores.add_store(store_name, None, product_ids)
+        print('Database loaded')
+
+    def load_shelves(self, csv_path):
+        df = pd.read_csv(csv_path)
+        name_id_map = {}
+        for _, s in df.iterrows():
+            shelf_id = self.shelves.add_shelf(s['Name'], s['X1'], s['Y1'], s['X2'], s['Y2'])
+            name_id_map[s['Name']] = shelf_id
+        return name_id_map
+
+    def load_products(self, csv_path, name_id_map):
+        df = pd.read_csv(csv_path)
+        product_ids = []
+        for _, p in df.iterrows():
+            product_ids.append(self.products.add_product(p['Name'], name_id_map[p['Shelf']]))
+        return product_ids
+
+    def wipe_database(self):
+        self.products.wipe()
+        self.stores.wipe()
+        self.shelves.wipe()
+        print('Database wiped')
+
+
+        
 
 class DatabaseBuilder():
     def __init__(self, db):

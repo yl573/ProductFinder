@@ -1,4 +1,5 @@
-from ..shared.collections import ProductCollection, NodeCollection, StoreCollection
+from ..shared.collections import (ProductCollection, NodeCollection,
+                                  StoreCollection, ShelfCollection)
 from .floor_map import FloorMap
 from .matching import fuzzy_match
 import numpy as np
@@ -56,8 +57,10 @@ def find_path_to_product(product, connected_nodes, store_map, user_position):
     user_intercept_pos, _ = find_aisle_intercept(
         user_position, user_aisle_nodes[0].pos, user_aisle_nodes[1].pos)
 
-    if same_nodes([str(connected_nodes[0]['_id']), str(connected_nodes[1]['_id'])],
-                  [user_aisle_nodes[0].name, user_aisle_nodes[1].name]):
+    if same_nodes(
+        [str(connected_nodes[0]['_id']),
+         str(connected_nodes[1]['_id'])],
+        [user_aisle_nodes[0].name, user_aisle_nodes[1].name]):
         # if we happen to be on the aisle of the product
         # just go the the product intercept
         connections = ['Product Aisle Intercept']
@@ -98,6 +101,7 @@ class ProductFinder():
         self.products = ProductCollection(self.db)
         self.nodes = NodeCollection(self.db)
         self.stores = StoreCollection(self.db)
+        self.shelves = ShelfCollection(self.db)
 
     def find_store(self, store_name):
         store = self.stores.query_one({'Name': store_name})
@@ -116,8 +120,7 @@ class ProductFinder():
 
         return [r['Name'] for r in results]
 
-    def search_path_to_product(self, product_name, store_name, user_position):
-
+    def find_product_in_store(self, product_name, store_name):
         store = self.find_store(store_name)
         product = self.products.query_one({
             '_id': {
@@ -130,6 +133,16 @@ class ProductFinder():
             raise ValueError(
                 "The product \"%s\" is not found in store \"%s\"" %
                 (product_name, store_name))
+        return product
+
+    def get_product_shelf(self, product_name, store_name):
+        product = self.find_product_in_store(product_name, store_name)
+        shelf = self.shelves.query_one({'_id': product['ShelfId']})
+
+        return (shelf['Name'], shelf['X1'], shelf['Y1'], shelf['X2'], shelf['Y2'])
+
+    def search_path_to_product(self, product_name, store_name, user_position):
+        product = self.find_product_in_store(product_name, store_name)
 
         # find all the data
         all_store_nodes = cursor_to_list(

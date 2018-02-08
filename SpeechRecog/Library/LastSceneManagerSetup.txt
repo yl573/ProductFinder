@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Recording.unity
-  isLoaded: 1
-  isActive: 1

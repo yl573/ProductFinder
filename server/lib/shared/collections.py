@@ -30,14 +30,14 @@ class ProductCollection(Collection):
     def __init__(self, db):
         Collection.__init__(self, db, 'Products')
 
-    def add_product(self, name, alias, connected_node_ids, planar_position,
-                    height):
+    def add_product(self, name, shelf_id, alias='', connected_node_ids=None, planar_position=None, height=None):
         product = {
             'Name': name,
             'Alias': alias,
             'ConnectedNodeIds': connected_node_ids,
             'PlanarPosition': planar_position,
-            'Height': height
+            'Height': height,
+            'ShelfId': shelf_id
         }
         result = Collection.add(self, product)
         return result.inserted_id
@@ -82,6 +82,21 @@ class StoreCollection(Collection):
             'ProductIds': product_ids
         }
         result = Collection.add(self, store)
+        return result.inserted_id
+
+class ShelfCollection(Collection):
+    def __init__(self, db):
+        Collection.__init__(self, db, 'Shelves')
+
+    def add_shelf(self, name, x1, y1, x2, y2):
+        shelf = {
+            'Name': name,
+            'X1': x1,
+            'Y1': y1,
+            'X2': x2,
+            'Y2': y2
+        }
+        result = Collection.add(self, shelf)
         return result.inserted_id
 
 

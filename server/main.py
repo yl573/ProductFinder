@@ -59,10 +59,31 @@ def find_path():
     db = client[db_name]
 
     finder = ProductFinder(db)
-    path, height = finder.search_path_to_product(product, store_name, position)
-    print(pprint.pformat(path))
-    print(height)
-    return json.dumps({'path': [list(p) for p in path], 'height': height})
+    try:
+        path, height = finder.search_path_to_product(product, store_name, position)
+        return json.dumps({'path': [list(p) for p in path], 'height': height})
+    except ValueError as e:
+        return json.dumps({'error': str(e)})
+    
+
+@app.route('/findshelf', methods=['POST'])
+def find_shelf():
+
+    product = request.form['product']
+
+    client = MongoClient(db_url)
+    db = client[db_name]
+
+    finder = ProductFinder(db)
+    try:
+        name, x1, y1, x2, y2 = finder.get_product_shelf(product, store_name)
+        return json.dumps({
+            'name': name,
+            'left': [x1, y1],
+            'right': [x2, y2]
+        })
+    except ValueError as e:
+        return json.dumps({'error': str(e)})
 
 
 app.run(host="0.0.0.0", port=port)
