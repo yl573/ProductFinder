@@ -1,5 +1,6 @@
 from lib.product_search.main import ProductFinder
-from lib.database_builder.main import DatabaseBuilder, ShelfOnlyDatabaseBuilder
+from lib.database_builder.main import DatabaseBuilder 
+from lib.database_builder.shelf_only_temp import ShelfOnlyDatabaseBuilder
 from lib.qr_reader.main import QRReader
 import sys
 import os
@@ -21,4 +22,4 @@ map_path = os.path.dirname(os.path.realpath(__file__)) + '/../Maps/' + sys.argv[
 # builder = DatabaseBuilder(db)
 builder = ShelfOnlyDatabaseBuilder(db)
 builder.wipe_database()
-builder.load_shelves_and_products(map_path+'/shelves.csv', map_path+'/products.csv', sys.argv[1])
+builder.load_shelves_and_products(map_path+'/shelves.json', map_path+'/products.csv', sys.argv[1])

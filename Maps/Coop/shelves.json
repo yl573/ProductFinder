@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Target",
+        "length": 0,
+        "startPos": {
+            "x": 913,
+            "y": 1370
+        },
+        "endPos": {
+            "x": 913,
+            "y": 1370
+        },
+        "actualLength": 0,
+        "actualStartPos": {
+            "x": 5.815286624203822,
+            "y": 8.726114649681529
+        },
+        "actualEndPos": {
+            "x": 5.815286624203822,
+            "y": 8.726114649681529
+        },
+        "isPoint": true
+    },
+    {
+        "name": "Ambient",
+        "length": 393,
+        "startPos": {
+            "x": 741,
+            "y": 1263
+        },
+        "endPos": {
+            "x": 741,
+            "y": 870
+        },
+        "actualLength": 2.5031847133757963,
+        "actualStartPos": {
+            "x": 4.719745222929936,
+            "y": 8.044585987261147
+        },
+        "actualEndPos": {
+            "x": 4.719745222929936,
+            "y": 5.54140127388535
+        },
+        "isPoint": false
+    },
+    {
+        "name": "Chilled 1",
+        "length": 296.00168918436924,
+        "startPos": {
+            "x": 742,
+            "y": 868.9999999999999
+        },
+        "endPos": {
+            "x": 741,
+            "y": 573
+        },
+        "actualLength": 1.8853610776074474,
+        "actualStartPos": {
+            "x": 4.726114649681529,
+            "y": 5.535031847133758
+        },
+        "actualEndPos": {
+            "x": 4.719745222929936,
+            "y": 3.6496815286624207
+        },
+        "isPoint": false
+    },
+    {
+        "name": "Chilled 2",
+        "length": 294.0017006753532,
+        "startPos": {
+            "x": 742,
+            "y": 574
+        },
+        "endPos": {
+            "x": 741,
+            "y": 280
+        },
+        "actualLength": 1.8726222972952435,
+        "actualStartPos": {
+            "x": 4.726114649681529,
+            "y": 3.656050955414013
+        },
+        "actualEndPos": {
+            "x": 4.719745222929936,
+            "y": 1.78343949044586
+        },
+        "isPoint": false
+    }
+]
