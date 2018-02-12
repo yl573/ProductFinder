@@ -30,10 +30,14 @@ class ShelfOnlyDatabaseBuilder():
         for d in data:
             shelf_id = self.shelves.add_shelf(
                 d['name'], 
-                d['actualStartPos']['x'] - target['actualStartPos']['x'], 
-                d['actualStartPos']['y'] - target['actualStartPos']['y'],
-                d['actualEndPos']['x'] - target['actualStartPos']['x'], 
-                d['actualEndPos']['y'] - target['actualStartPos']['y'])
+                d['startPos']['x'] - target['startPos']['x'], 
+                d['startPos']['y'] - target['startPos']['y'],
+                d['endPos']['x'] - target['endPos']['x'], 
+                d['endPos']['y'] - target['endPos']['y'])
+                # d['actualStartPos']['x'] - target['actualStartPos']['x'], 
+                # d['actualStartPos']['y'] - target['actualStartPos']['y'],
+                # d['actualEndPos']['x'] - target['actualEndPos']['x'], 
+                # d['actualEndPos']['y'] - target['actualEndPos']['y'])
             name_id_map[d['name']] = shelf_id
         return name_id_map
 
