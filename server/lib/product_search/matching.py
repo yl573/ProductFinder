@@ -1,8 +1,17 @@
-# currently finds the first product with a name or alias containing the search_name
+
+from difflib import SequenceMatcher
+
+string1 = "apple pie available"
+string2 = "come have some apple pies"
+
+
 def fuzzy_match(search_name, products):
     match = []
     for product in products:
-        if (search_name.lower() in product['Name'].lower()
-            or search_name.lower() in product['Alias'].lower()):
+        search = search_name.lower()
+        # alias = product['Alias'].lower()
+        name = product['Name'].lower()
+        common = SequenceMatcher(None, name, search).find_longest_match(0, len(name), 0, len(search))
+        if common.size > 4:
             match.append(product)
     return match
